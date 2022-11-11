@@ -3,6 +3,7 @@ import express from 'express'
 import http from 'node:http'
 import { Server } from 'socket.io'
 import {
+    GraphQLExecutionResult,
     GraphQLServer,
     JsonLogger
 } from '@dreamit/graphql-server'
@@ -10,8 +11,10 @@ import {
     userSchema,
     userSchemaResolvers
 } from './ExampleSchemas'
+import bodyParser from 'body-parser'
 
 const app = express()
+app.use(bodyParser.text({type: '*/*'}))
 const server = http.createServer(app)
 
 const graphqlServer = new GraphQLServer(
@@ -22,6 +25,7 @@ const graphqlServer = new GraphQLServer(
     }
 )
 
+/** Use case: WebSocket */
 const io = new Server(server)
 io.on('connection', (socket) => {
     console.log('a user connected')
@@ -43,6 +47,21 @@ io.on('connection', (socket) => {
 app.get('/', (_request, response) => {
     // eslint-disable-next-line unicorn/prefer-module
     response.sendFile(__dirname + '/index.html')
+})
+
+/** Use case: webserver middleware */
+app.all('/graphql', async(request, response) => {
+    return await graphqlServer.handleRequestAndSendResponse(request, response)
+})
+
+const resultsMap:Array<GraphQLExecutionResult> = []
+
+/** Use case: webserver middleware with storing results */
+app.all('/graphqlsave', async(request, response) => {
+    const result = await graphqlServer.handleRequest(request)
+    resultsMap.push(result)
+    console.log('resultsMap has length' , resultsMap.length)
+    return response.status(result.statusCode ?? 200).send(result.executionResult)
 })
 
 server.listen(3000, () => {
