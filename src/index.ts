@@ -2,10 +2,13 @@
 import express from 'express'
 import http from 'node:http'
 import { Server } from 'socket.io'
-import {GraphQLServer, JsonLogger} from '@dreamit/graphql-server'
-import { 
-    userSchema, 
-    userSchemaResolvers 
+import {
+    GraphQLServer,
+    JsonLogger
+} from '@dreamit/graphql-server'
+import {
+    userSchema,
+    userSchemaResolvers
 } from './ExampleSchemas'
 
 const app = express()
@@ -15,17 +18,16 @@ const graphqlServer = new GraphQLServer(
     {
         schema: userSchema,
         rootValue: userSchemaResolvers,
-        logger: new JsonLogger('fastifyServer', 'user-service')
+        logger: new JsonLogger('socketioServer', 'user-service')
     }
 )
 
 const io = new Server(server)
 io.on('connection', (socket) => {
     console.log('a user connected')
-    socket.on('chat message', async (message) => {
+    socket.on('chat message', async(message) => {
         console.log('message: ' + message)
         // Execute GraphQL request from message
-
         const result = await graphqlServer.executeRequest({
             query: message
         })
