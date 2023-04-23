@@ -3,10 +3,10 @@ import express from 'express'
 import http from 'node:http'
 import { Server } from 'socket.io'
 import {
-    GraphQLExecutionResult,
     GraphQLServer,
     JsonLogger
 } from '@dreamit/graphql-server'
+import {GraphQLExecutionResult} from '@sgohlke/graphql-server-base'
 import {
     userSchema,
     userSchemaResolvers
@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
     socket.on('chat message', async(message) => {
         console.log('message: ' + message)
         // Execute GraphQL request from message
-        const result = await graphqlServer.executeRequest({
+        const result = await graphqlServer.handleRequest({
             query: message
         })
 
@@ -51,7 +51,7 @@ app.get('/', (_request, response) => {
 
 /** Use case: webserver middleware */
 app.all('/graphql', async(request, response) => {
-    return await graphqlServer.handleRequestAndSendResponse(request, response)
+    return await graphqlServer.handleRequest(request, response)
 })
 
 const resultsMap:Array<GraphQLExecutionResult> = []
