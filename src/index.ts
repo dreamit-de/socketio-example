@@ -6,7 +6,7 @@ import {
     GraphQLServer,
     JsonLogger
 } from '@dreamit/graphql-server'
-import {GraphQLExecutionResult} from '@sgohlke/graphql-server-base'
+import {GraphQLExecutionResult} from '@dreamit/graphql-server-base'
 import {
     userSchema,
     userSchemaResolvers
