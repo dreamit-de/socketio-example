@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/sgohlke/socketio-example#readme",
   "dependencies": {
-    "@dreamit/graphql-server": "4.2.5",
+    "@dreamit/graphql-server": "4.2.6",
     "express": "4.18.2",
     "graphql": "16.7.1",
     "socket.io": "4.7.1"
