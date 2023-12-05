@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint src/*.ts src/**/*.ts",
-    "start": "npm run build && node build/index.js"
+    "start": "npm run build && node build/index.js",
+    "check": "tsc --noEmit --pretty",
+    "test": "echo 'Not defined in this project'"
   },
   "repository": {
     "type": "git",
