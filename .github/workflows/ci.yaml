@@ -4,5 +4,3 @@ on: push
 jobs:
   socketioexample:
     uses: dreamit-de/workflows/.github/workflows/nodejs-ci.yml@main
-    with:
-      last-lts: ''
