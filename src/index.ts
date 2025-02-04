@@ -10,7 +10,7 @@ import {GraphQLExecutionResult} from '@dreamit/graphql-server-base'
 import {
     userSchema,
     userSchemaResolvers
-} from './ExampleSchemas'
+} from '@dreamit/graphql-testing'
 import bodyParser from 'body-parser'
 
 const app = express()
