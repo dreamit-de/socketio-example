@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint src/*.ts src/**/*.ts",
+    "lint": "oxlint",
     "start": "npm run build && node build/index.js",
     "check": "tsc --noEmit --pretty",
     "test": "echo 'Not defined in this project'"
@@ -32,10 +32,7 @@
     "@types/body-parser": "1.19.5",
     "@types/express": "4.17.21",
     "@types/node": "22.13.5",
-    "eslint-plugin-deprecation": "3.0.0",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-unicorn": "57.0.0",
-    "typescript": "5.7.3",
-    "typescript-eslint": "8.25.0"
+    "oxlint": "0.15.12",
+    "typescript": "5.7.3"
   }
 }
