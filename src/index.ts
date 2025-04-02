@@ -6,7 +6,7 @@ import {
     GraphQLServer,
     JsonLogger
 } from '@dreamit/graphql-server'
-import {GraphQLExecutionResult} from '@dreamit/graphql-server-base'
+import {GraphQLExecutionResult, GraphQLServerRequest, GraphQLServerResponse} from '@dreamit/graphql-server-base'
 import {
     userSchema,
     userSchemaResolvers
@@ -50,18 +50,18 @@ app.get('/', (_request, response) => {
 })
 
 /** Use case: webserver middleware */
-app.all('/graphql', async(request, response) => {
-    return await graphqlServer.handleRequest(request, response)
+app.all('/graphql', async(request: GraphQLServerRequest, response: GraphQLServerResponse) => {
+    await graphqlServer.handleRequest(request, response)
 })
 
 const resultsMap:Array<GraphQLExecutionResult> = []
 
 /** Use case: webserver middleware with storing results */
-app.all('/graphqlsave', async(request, response) => {
+app.all('/graphqlsave', async(request: GraphQLServerRequest, response) => {
     const result = await graphqlServer.handleRequest(request)
     resultsMap.push(result)
     console.log('resultsMap has length' , resultsMap.length)
-    return response.status(result.statusCode ?? 200).send(result.executionResult)
+    response.status(result.statusCode ?? 200).send(result.executionResult)
 })
 
 server.listen(3000, () => {
