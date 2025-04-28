@@ -25,14 +25,14 @@
     "@dreamit/graphql-server": "4.13.3",
     "@dreamit/graphql-testing": "0.2.0",
     "express": "5.1.0",
-    "graphql": "16.10.0",
+    "graphql": "16.11.0",
     "socket.io": "4.8.1"
   },
   "devDependencies": {
     "@types/body-parser": "1.19.5",
     "@types/express": "5.0.1",
-    "@types/node": "22.14.1",
-    "oxlint": "0.16.7",
+    "@types/node": "22.15.3",
+    "oxlint": "0.16.8",
     "typescript": "5.8.3"
   }
 }
