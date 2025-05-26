@@ -22,8 +22,8 @@
   },
   "homepage": "https://github.com/sgohlke/socketio-example#readme",
   "dependencies": {
-    "@dreamit/graphql-server": "5.0.0",
-    "@dreamit/graphql-testing": "1.0.0",
+    "@dreamit/graphql-server": "5.0.2",
+    "@dreamit/graphql-testing": "1.0.1",
     "express": "5.1.0",
     "graphql": "16.11.0",
     "socket.io": "4.8.1"
@@ -31,8 +31,8 @@
   "devDependencies": {
     "@types/body-parser": "1.19.5",
     "@types/express": "5.0.1",
-    "@types/node": "22.15.19",
-    "oxlint": "0.16.11",
+    "@types/node": "22.15.21",
+    "oxlint": "0.16.12",
     "typescript": "5.8.3"
   }
 }
