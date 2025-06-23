@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/sgohlke/socketio-example#readme",
   "dependencies": {
-    "@dreamit/graphql-server": "5.0.2",
+    "@dreamit/graphql-server": "5.1.0",
     "@dreamit/graphql-testing": "1.0.1",
     "express": "5.1.0",
     "graphql": "16.11.0",
@@ -32,7 +32,7 @@
     "@types/body-parser": "1.19.6",
     "@types/express": "5.0.1",
     "@types/node": "24.0.3",
-    "oxlint": "1.1.0",
+    "oxlint": "1.3.0",
     "typescript": "5.8.3"
   }
 }
